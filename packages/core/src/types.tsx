@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import type {
   DefaultRouterOptions,
   NavigationState,
@@ -154,6 +155,9 @@ type NavigationHelpersCommon<
    *
    * @param name Name of the route to navigate to.
    * @param [params] Params object for the route.
+   * @param trigger (Optional) The React.MouseEvent or GestureResponderEvent trigger event that is
+   * leading to this navigation. If provided, will be accessible through the navigator's observed
+   * actions.
    */
   navigate<RouteName extends keyof ParamList>(
     ...args: undefined extends ParamList[RouteName]
@@ -165,11 +169,27 @@ type NavigationHelpersCommon<
    * Navigate to a route in current navigation tree.
    *
    * @param route Object with `key` or `name` for the route to navigate to, and a `params` object.
+   * Can also optionally carry a React.MouseEvent or GestureResponderEvent `trigger` event that is
+   * leading to this navigation. If provided, will be accessible through the navigator's observed
+   * actions.
    */
   navigate<RouteName extends keyof ParamList>(
     route:
-      | { key: string; params?: ParamList[RouteName] }
-      | { name: RouteName; key?: string; params: ParamList[RouteName] }
+      | {
+          key: string;
+          params?: ParamList[RouteName];
+          trigger?:
+            | React.MouseEvent<HTMLElement, MouseEvent>
+            | GestureResponderEvent;
+        }
+      | {
+          name: RouteName;
+          key?: string;
+          params: ParamList[RouteName];
+          trigger?:
+            | React.MouseEvent<HTMLElement, MouseEvent>
+            | GestureResponderEvent;
+        }
   ): void;
 
   /**

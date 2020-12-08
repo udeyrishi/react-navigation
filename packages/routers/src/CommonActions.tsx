@@ -1,4 +1,6 @@
+import type * as React from 'react';
 import type { NavigationState, PartialState, Route } from './types';
+import type { GestureResponderEvent } from 'react-native';
 
 type ResetState =
   | PartialState<NavigationState>
@@ -16,8 +18,24 @@ export type Action =
   | {
       type: 'NAVIGATE';
       payload:
-        | { key: string; name?: undefined; params?: object; merge?: boolean }
-        | { name: string; key?: string; params?: object; merge?: boolean };
+        | {
+            key: string;
+            name?: undefined;
+            params?: object;
+            merge?: boolean;
+            trigger?:
+              | React.MouseEvent<HTMLElement, MouseEvent>
+              | GestureResponderEvent;
+          }
+        | {
+            name: string;
+            key?: string;
+            params?: object;
+            merge?: boolean;
+            trigger?:
+              | React.MouseEvent<HTMLElement, MouseEvent>
+              | GestureResponderEvent;
+          };
       source?: string;
       target?: string;
     }
@@ -40,15 +58,35 @@ export function goBack(): Action {
 
 export function navigate(
   route:
-    | { key: string; params?: object }
-    | { name: string; key?: string; params?: object }
+    | {
+        key: string;
+        params?: object;
+        trigger?:
+          | React.MouseEvent<HTMLElement, MouseEvent>
+          | GestureResponderEvent;
+      }
+    | {
+        name: string;
+        key?: string;
+        params?: object;
+        trigger?:
+          | React.MouseEvent<HTMLElement, MouseEvent>
+          | GestureResponderEvent;
+      }
 ): Action;
 // eslint-disable-next-line no-redeclare
-export function navigate(name: string, params?: object): Action;
+export function navigate(
+  name: string,
+  params?: object,
+  trigger?: React.MouseEvent<HTMLElement, MouseEvent> | GestureResponderEvent
+): Action;
 // eslint-disable-next-line no-redeclare
 export function navigate(...args: any): Action {
   if (typeof args[0] === 'string') {
-    return { type: 'NAVIGATE', payload: { name: args[0], params: args[1] } };
+    return {
+      type: 'NAVIGATE',
+      payload: { name: args[0], params: args[1], trigger: args[2] },
+    };
   } else {
     const payload = args[0] || {};
 

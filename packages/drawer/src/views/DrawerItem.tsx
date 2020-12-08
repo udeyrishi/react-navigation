@@ -8,6 +8,7 @@ import {
   TextStyle,
   Platform,
   TouchableWithoutFeedbackProps,
+  GestureResponderEvent,
 } from 'react-native';
 import { Link, useTheme } from '@react-navigation/native';
 import Color from 'color';
@@ -39,7 +40,9 @@ type Props = {
   /**
    * Function to execute on press.
    */
-  onPress: () => void;
+  onPress: (
+    event: React.MouseEvent<HTMLElement, MouseEvent> | GestureResponderEvent
+  ) => void;
   /**
    * Color for the icon and label when the item is active.
    */
@@ -77,7 +80,9 @@ const Touchable = ({
 }: TouchableWithoutFeedbackProps & {
   to?: string;
   children: React.ReactNode;
-  onPress?: () => void;
+  onPress?: (
+    event: React.MouseEvent<HTMLElement, MouseEvent> | GestureResponderEvent
+  ) => void;
 }) => {
   if (Platform.OS === 'web' && to) {
     // React Native Web doesn't forward `onClick` if we use `TouchableWithoutFeedback`.

@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   View,
   ViewProps,
+  GestureResponderEvent,
 } from 'react-native';
 
 export type Props = ViewProps & {
@@ -19,7 +20,9 @@ export type Props = ViewProps & {
   disabled?: boolean | null;
   borderless?: boolean;
   delayPressIn?: number;
-  onPress?: () => void;
+  onPress?: (
+    event: React.MouseEvent<HTMLElement, MouseEvent> | GestureResponderEvent
+  ) => void;
   children: React.ReactNode;
 };
 

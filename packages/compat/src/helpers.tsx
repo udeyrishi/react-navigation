@@ -1,3 +1,4 @@
+import type { GestureResponderEvent } from 'react-native';
 import * as NavigationActions from './NavigationActions';
 import * as StackActions from './StackActions';
 import * as SwitchActions from './SwitchActions';
@@ -18,13 +19,15 @@ export function navigate(options: NavigateActionPayload): NavigateActionType;
 export function navigate(
   options: string | NavigateActionPayload,
   params?: object,
-  action?: never
+  action?: never,
+  trigger?: React.MouseEvent<HTMLElement, MouseEvent> | GestureResponderEvent
 ): NavigateActionType {
   if (typeof options === 'string') {
     return NavigationActions.navigate({
       routeName: options,
       params,
       action,
+      trigger,
     });
   }
 

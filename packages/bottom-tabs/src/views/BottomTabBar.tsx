@@ -7,6 +7,7 @@ import {
   LayoutChangeEvent,
   StyleProp,
   ViewStyle,
+  GestureResponderEvent,
 } from 'react-native';
 import {
   NavigationContext,
@@ -302,7 +303,9 @@ export default function BottomTabBar({
           const focused = index === state.index;
           const { options } = descriptors[route.key];
 
-          const onPress = () => {
+          const onPress = (
+            e: React.MouseEvent<HTMLElement, MouseEvent> | GestureResponderEvent
+          ) => {
             const event = navigation.emit({
               type: 'tabPress',
               target: route.key,
@@ -311,7 +314,7 @@ export default function BottomTabBar({
 
             if (!focused && !event.defaultPrevented) {
               navigation.dispatch({
-                ...CommonActions.navigate(route.name),
+                ...CommonActions.navigate(route.name, undefined, e),
                 target: state.key,
               });
             }

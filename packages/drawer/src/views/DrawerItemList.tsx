@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import {
   CommonActions,
   DrawerActions,
@@ -58,11 +59,15 @@ export default function DrawerItemList({
         labelStyle={labelStyle}
         style={itemStyle}
         to={buildLink(route.name, route.params)}
-        onPress={() => {
+        onPress={(
+          trigger:
+            | React.MouseEvent<HTMLElement, MouseEvent>
+            | GestureResponderEvent
+        ) => {
           navigation.dispatch({
             ...(focused
               ? DrawerActions.closeDrawer()
-              : CommonActions.navigate(route.name)),
+              : CommonActions.navigate(route.name, undefined, trigger)),
             target: state.key,
           });
         }}

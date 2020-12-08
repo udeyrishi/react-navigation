@@ -1,3 +1,5 @@
+import type * as React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import { CommonActions, NavigationState } from '@react-navigation/native';
 
 export function navigate({
@@ -5,11 +7,13 @@ export function navigate({
   params,
   key,
   action,
+  trigger,
 }: {
   routeName: string;
   params?: object;
   key?: string;
   action?: never;
+  trigger?: React.MouseEvent<HTMLElement, MouseEvent> | GestureResponderEvent;
 }): CommonActions.Action {
   if (action !== undefined) {
     throw new Error(
@@ -21,6 +25,7 @@ export function navigate({
     name: routeName,
     key: key,
     params: params,
+    trigger,
   });
 }
 
