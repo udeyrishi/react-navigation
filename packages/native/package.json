@@ -37,7 +37,7 @@
     "clean": "del lib"
   },
   "dependencies": {
-    "@react-navigation/core": "^5.14.4",
+    "@react-navigation/core": "udeyrishi/react-navigation.git#react-navigation-core-v5.14.4-gitpkg",
     "escape-string-regexp": "^4.0.0",
     "nanoid": "^3.1.15"
   },

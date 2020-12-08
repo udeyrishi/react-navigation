@@ -3499,6 +3499,16 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
+"@react-navigation/core@udeyrishi/react-navigation.git#react-navigation-core-v5.14.4-gitpkg":
+  version "5.14.4"
+  resolved "https://codeload.github.com/udeyrishi/react-navigation/tar.gz/ee11e894e251da23f8970a588392715c24e54fec"
+  dependencies:
+    "@react-navigation/routers" udeyrishi/react-navigation.git#react-navigation-routers-v5.6.2-gitpkg
+    escape-string-regexp "^4.0.0"
+    nanoid "^3.1.15"
+    query-string "^6.13.6"
+    react-is "^16.13.0"
+
 "@react-navigation/routers@udeyrishi/react-navigation.git#react-navigation-routers-v5.6.2-gitpkg":
   version "5.6.2"
   resolved "https://codeload.github.com/udeyrishi/react-navigation/tar.gz/741b81b78221f972abe988097cbf7e5d2f39cc8d"
