@@ -35,7 +35,7 @@
     "clean": "del lib"
   },
   "dependencies": {
-    "@react-navigation/routers": "^5.6.2",
+    "@react-navigation/routers": "udeyrishi/react-navigation.git#react-navigation-routers-v5.6.2-gitpkg",
     "escape-string-regexp": "^4.0.0",
     "nanoid": "^3.1.15",
     "query-string": "^6.13.6",
