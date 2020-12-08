@@ -3509,6 +3509,14 @@
     query-string "^6.13.6"
     react-is "^16.13.0"
 
+"@react-navigation/native@udeyrishi/react-navigation.git#react-navigation-native-v5.8.10-gitpkg":
+  version "5.8.10"
+  resolved "https://codeload.github.com/udeyrishi/react-navigation/tar.gz/7a30d120852e6082ad3ab8cdabf0bc7082c891e5"
+  dependencies:
+    "@react-navigation/core" udeyrishi/react-navigation.git#react-navigation-core-v5.14.4-gitpkg
+    escape-string-regexp "^4.0.0"
+    nanoid "^3.1.15"
+
 "@react-navigation/routers@udeyrishi/react-navigation.git#react-navigation-routers-v5.6.2-gitpkg":
   version "5.6.2"
   resolved "https://codeload.github.com/udeyrishi/react-navigation/tar.gz/741b81b78221f972abe988097cbf7e5d2f39cc8d"
